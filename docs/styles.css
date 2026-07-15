@@ -59,6 +59,7 @@ section.alt { background: linear-gradient(180deg, var(--panel) 0%, var(--bg) 100
   font-weight: 900; font-size: 20px; color: var(--text); letter-spacing: -0.3px;
 }
 .logo svg { display: block; }
+.logo-anim { width: 32px; height: 32px; display: block; flex: none; }
 .logo .en { font-size: 12px; font-weight: 700; color: var(--dim); margin-top: 3px; }
 .nav-links { margin-left: auto; display: flex; align-items: center; gap: 22px; }
 .nav-links a { color: var(--body); font-size: 14px; font-weight: 600; }
