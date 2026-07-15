@@ -17,6 +17,7 @@
   --mint: #7fbf96;
   --sun: #ffd66b;
   --cream: #fffbf4;
+  --sale: #e23b3b;
   --radius: 18px;
 }
 
@@ -307,8 +308,18 @@ section.alt { background: linear-gradient(180deg, var(--panel) 0%, var(--bg) 100
 }
 .price-card.hot { border: 2px solid var(--accent); box-shadow: 0 16px 44px rgba(242,148,106,0.2); }
 .price-card h3 { font-size: 18px; font-weight: 800; }
-.price { font-size: 40px; font-weight: 900; margin-top: 10px; letter-spacing: -1px; }
-.price-was { font-size: 18px; color: var(--dim); text-decoration: line-through; margin-top: 12px; }
+.price { font-size: 40px; font-weight: 900; margin-top: 4px; letter-spacing: -1px; }
+.price-was-row { display: flex; align-items: baseline; gap: 9px; margin-top: 12px; }
+.price-was {
+  font-size: 19px; font-weight: 700; color: var(--dim);
+  text-decoration: line-through;
+  text-decoration-color: var(--sale);
+  text-decoration-thickness: 2.5px;
+}
+.price-off {
+  font-size: 13px; font-weight: 800; color: #fff;
+  background: var(--sale); border-radius: 7px; padding: 2px 8px;
+}
 .price-note { font-size: 13px; color: var(--body); margin-top: 4px; }
 .price-card ul { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 11px; }
 .price-card li { font-size: 14px; color: var(--body); padding-left: 26px; position: relative; }
