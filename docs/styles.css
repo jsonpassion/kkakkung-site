@@ -43,6 +43,10 @@ body {
   overflow-wrap: break-word;   /* 긴 영문·URL은 안전하게 개행 */
 }
 
+/* 줄바꿈 품질 — 지원 브라우저에서 제목은 양쪽 균형, 본문은 외톨이 단어 방지 */
+h1, h2, h3 { text-wrap: balance; }
+p, li, summary { text-wrap: pretty; }
+
 /* ---------- 분위기: 드리프트하는 웜 글로우 + 그레인 ---------- */
 .atmosphere {
   position: fixed; inset: 0; z-index: -2; pointer-events: none;
