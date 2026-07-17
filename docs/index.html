@@ -26,7 +26,6 @@
       <a href="#how">쓰는 법</a>
       <a href="#motion">이런 앱이에요</a>
       <a href="#features">기능</a>
-      <a href="#demo">미리 보기</a>
       <a href="#pricing">가격</a>
       <a href="#faq">FAQ</a>
       <a class="btn primary nav-cta" href="#download">다운로드</a>
@@ -110,30 +109,18 @@
   </div>
 </section>
 
-<!-- ======================= MOTION (Lottie) ======================= -->
-<section id="motion" class="deep">
+<!-- ============= 까꿍의 순간 (시네마 밴드) — 기존 Lottie 3카드 대체 ============= -->
+<section id="motion" class="film" style="background-image:url('assets/video/laugh.jpg')">
+  <video class="film-video" autoplay muted loop playsinline preload="metadata"
+         poster="assets/video/laugh.jpg" aria-hidden="true">
+    <source src="assets/video/laugh.mp4" type="video/mp4" />
+  </video>
+  <div class="film-scrim"></div>
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="film-copy reveal">
       <span class="eyebrow">이런 앱이에요</span>
-      <h2>움직임으로 보는 까꿍</h2>
-      <p>세 장면이면 이 앱이 하는 일을 전부 설명할 수 있어요.</p>
-    </div>
-    <div class="motion-grid">
-      <div class="motion-card card reveal from-l">
-        <div class="motion-anim" data-lottie="lottie/smile-capture.json" aria-label="웃음 게이지가 차오르다 자동 촬영되는 애니메이션"></div>
-        <h3>웃으면, 저절로 찰칵</h3>
-        <p>웃음이 차오르는 게이지가 가득 차는 순간, 셔터가 저절로 눌립니다. 놓칠 틈이 없어요.</p>
-      </div>
-      <div class="motion-card card reveal">
-        <div class="motion-anim" data-lottie="lottie/peekaboo.json" aria-label="까꿍 놀이로 눈이 마주치는 애니메이션"></div>
-        <h3>까꿍! 하면, 눈이 마주쳐요</h3>
-        <p>폰 뒤에서 "까꿍!" 하고 나타나면 아기 시선이 렌즈로 모여요. 웃음과 눈맞춤을 한 번에 담는 비결이에요.</p>
-      </div>
-      <div class="motion-card card reveal from-r">
-        <div class="motion-anim" data-lottie="lottie/on-device.json" aria-label="아기 사진이 폰 안에만 저장되는 애니메이션"></div>
-        <h3>아기 사진은, 폰 안에서만</h3>
-        <p>웃음을 알아보는 것도, 사진을 남기는 것도 모두 이 폰 안에서 이뤄져요. 서버도 계정도 없이, 잠금이 기본이에요.</p>
-      </div>
+      <h2>"까꿍!" 하면,<br />이 순간이 와요</h2>
+      <p>눈이 접히고 입이 활짝 벌어지는 딱 그 찰나. 까꿍은 바로 이 얼굴을 알아보고 셔터를 대신 눌러요.</p>
     </div>
   </div>
 </section>
@@ -214,29 +201,18 @@
   </div>
 </section>
 
-<!-- ======================= DEMO ======================= -->
-<section id="demo" class="deep">
+<!-- ============= 그 찰나 (시네마 밴드) — 기존 게이지 데모 대체 ============= -->
+<section id="demo" class="film" style="background-image:url('assets/video/moment.jpg')">
+  <video class="film-video" autoplay muted loop playsinline preload="metadata"
+         poster="assets/video/moment.jpg" aria-hidden="true">
+    <source src="assets/video/moment.mp4" type="video/mp4" />
+  </video>
+  <div class="film-scrim right"></div>
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">미리 보기</span>
-      <h2>다운로드 전에, 느낌만 먼저</h2>
-      <p>재생을 누르면, 까꿍이 웃음을 알아보고 셔터를 누르는 과정을 그대로 볼 수 있어요.</p>
-    </div>
-    <div class="demo-card reveal">
-      <div class="demo-stage" id="demoStage">
-        <svg class="demo-gauge" viewBox="0 0 200 200">
-          <circle class="track" cx="100" cy="100" r="95" />
-          <circle class="fill" id="demoFill" cx="100" cy="100" r="95" />
-        </svg>
-        <div class="demo-face" id="demoFace">
-          <div class="eye l"></div><div class="eye r"></div><div class="mouth"></div>
-        </div>
-        <div class="demo-flash" id="demoFlash"></div>
-        <button class="demo-play" id="demoPlay" aria-label="데모 재생">▶</button>
-        <div class="demo-badge" id="demoBadge">까꿍! 웃음 담았어요</div>
-      </div>
-      <div class="demo-strip" id="demoStrip"></div>
-      <p class="demo-note">실제 앱과 동일한 흐름 — 웃음 게이지가 가득 차면 셔터가 저절로 눌립니다.</p>
+    <div class="film-copy right reveal">
+      <span class="eyebrow">그 찰나</span>
+      <h2>그 웃음은,<br />딱 1초예요</h2>
+      <p>셔터를 누르는 사이 지나가 버려요. 엄마는 아기만 바라보세요 — 찰칵은 까꿍이 할게요.</p>
     </div>
   </div>
 </section>
@@ -321,6 +297,11 @@
 
 <!-- ======================= CTA ======================= -->
 <section class="deep cta">
+  <video class="film-video" autoplay muted loop playsinline preload="metadata"
+         poster="assets/video/glow.jpg" aria-hidden="true">
+    <source src="assets/video/glow.mp4" type="video/mp4" />
+  </video>
+  <div class="film-scrim cta-scrim"></div>
   <div class="wrap">
     <div class="cta-logo reveal" data-lottie="lottie/logo.json" aria-label="까꿍 로고"></div>
     <h2 class="reveal">오늘의 첫 까꿍을<br />담아볼까요?</h2>
@@ -360,6 +341,22 @@
     new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { e.isIntersecting ? anim.play() : anim.pause(); });
     }, { threshold: 0.25 }).observe(box);
+  });
+})();
+
+/* ---------- Cinema bands: pause offscreen, honor reduced-motion ---------- */
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids = document.querySelectorAll('.film-video');
+  vids.forEach(function (v) {
+    if (reduce) { v.removeAttribute('autoplay'); v.pause(); return; }
+    if (!('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.15 }).observe(v);
   });
 })();
 
@@ -407,68 +404,6 @@
   }, 3600);
 })();
 
-/* ---------- Demo: gauge fills, shutter fires, best cut chosen ---------- */
-(function () {
-  var CIRC = 597;
-  var playBtn = document.getElementById('demoPlay');
-  var fill = document.getElementById('demoFill');
-  var face = document.getElementById('demoFace');
-  var flash = document.getElementById('demoFlash');
-  var badge = document.getElementById('demoBadge');
-  var strip = document.getElementById('demoStrip');
-  var running = false, timers = [];
-
-  function set(off) { fill.style.strokeDashoffset = off; }
-
-  playBtn.addEventListener('click', function () {
-    if (running) return;
-    running = true;
-    playBtn.style.display = 'none';
-    badge.classList.remove('show');
-    strip.innerHTML = '';
-    face.classList.remove('smiling');
-    set(CIRC);
-
-    // 게이지 차오름 (웃음 번짐)
-    var steps = 40;
-    for (var s = 0; s <= steps; s++) {
-      (function (s) {
-        timers.push(setTimeout(function () {
-          set(CIRC - (CIRC - 40) * (s / steps));
-          if (s / steps > 0.45) face.classList.add('smiling');
-        }, 40 + s * 42));
-      })(s);
-    }
-    // 게이지 완료 → 셔터
-    timers.push(setTimeout(function () {
-      flash.classList.add('fire');
-      face.style.transform = 'scale(0.94)';
-      badge.classList.add('show');
-      setTimeout(function () { face.style.transform = ''; }, 200);
-    }, 40 + steps * 42 + 120));
-    // 연사 → 베스트컷
-    timers.push(setTimeout(function () {
-      flash.classList.remove('fire');
-      [0, 1, 2].forEach(function (n) {
-        timers.push(setTimeout(function () {
-          var shot = document.createElement('div');
-          shot.className = 'demo-shot' + (n === 1 ? ' best' : '');
-          strip.appendChild(shot);
-          requestAnimationFrame(function () { shot.classList.add('in'); });
-        }, n * 220));
-      });
-    }, 40 + steps * 42 + 380));
-    // 리셋
-    timers.push(setTimeout(function () {
-      playBtn.style.display = '';
-      playBtn.textContent = '↻';
-      badge.classList.remove('show');
-      face.classList.remove('smiling');
-      set(CIRC);
-      running = false;
-    }, 40 + steps * 42 + 2600));
-  });
-})();
 </script>
 
 </body>

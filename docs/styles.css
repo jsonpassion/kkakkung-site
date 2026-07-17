@@ -269,32 +269,57 @@ section { padding: 92px 0; position: relative; }
 .deep .card h3 { color: var(--text); }
 .deep .card p { color: var(--body); }
 
-/* ------------------------------ Demo ------------------------------ */
-.demo-card { max-width: 720px; margin: 0 auto; background: rgba(255,255,255,0.06); border: 1px solid var(--line-deep); border-radius: 24px; padding: 22px; box-shadow: 0 30px 70px rgba(0,0,0,0.35); }
-.demo-stage { position: relative; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; background: linear-gradient(170deg, #ffe9d6, #f7b58e); display: flex; align-items: center; justify-content: center; }
-.demo-face { width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle at 42% 38%, #fff2e6, #ffc5a3); border: 3px solid rgba(63,46,38,0.7); position: relative; transition: transform 0.2s ease; }
-.demo-face .eye { position: absolute; top: 58px; width: 16px; height: 16px; border-radius: 50%; background: #3f2e26; transition: height 0.25s ease, top 0.25s ease; }
-.demo-face .eye.l { left: 42px; } .demo-face .eye.r { right: 42px; }
-.demo-face .mouth { position: absolute; left: 50%; top: 84px; transform: translateX(-50%); width: 40px; height: 12px; border: 5px solid #3f2e26; border-top: none; border-radius: 0 0 40px 40px; transition: all 0.25s ease; }
-.demo-face.smiling .eye { height: 7px; top: 62px; }
-.demo-face.smiling .mouth { width: 62px; height: 30px; border-radius: 0 0 62px 62px; }
-.demo-gauge { position: absolute; width: 200px; height: 200px; transform: rotate(-90deg); }
-.demo-gauge circle { fill: none; stroke-width: 9; }
-.demo-gauge .track { stroke: rgba(255,255,255,0.5); }
-.demo-gauge .fill { stroke: var(--accent-deep); stroke-linecap: round; stroke-dasharray: 597; stroke-dashoffset: 597; transition: stroke-dashoffset 0.2s linear; }
-.demo-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
-.demo-flash.fire { animation: demoFlash 0.5s ease-out; }
-@keyframes demoFlash { 0% { opacity: 0; } 20% { opacity: 0.75; } 100% { opacity: 0; } }
-.demo-play { position: absolute; z-index: 4; width: 66px; height: 66px; border-radius: 50%; border: none; background: rgba(255,255,255,0.94); color: var(--accent-deep); font-size: 24px; cursor: pointer; box-shadow: 0 10px 28px rgba(0,0,0,0.28); transition: transform 0.15s var(--ease); }
-.demo-play:hover { transform: scale(1.07); }
-.demo-badge { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); background: rgba(28,22,19,0.75); color: #fff; font-size: 13px; font-weight: 700; padding: 7px 16px; border-radius: 999px; opacity: 0; transition: opacity 0.3s ease; }
-.demo-badge.show { opacity: 1; }
-.demo-note { text-align: center; font-size: 13px; color: var(--dim); margin-top: 16px; }
-.demo-strip { display: flex; gap: 8px; margin-top: 16px; justify-content: center; flex-wrap: wrap; }
-.demo-shot { width: 60px; height: 60px; border-radius: 12px; border: 2px solid var(--line-deep); background: linear-gradient(160deg, #ffe4cf, #f5b58f); position: relative; opacity: 0; transform: scale(0.6); transition: all 0.3s var(--ease); }
-.demo-shot.in { opacity: 1; transform: scale(1); }
-.demo-shot.best { border-color: var(--gold); }
-.demo-shot.best::after { content: "♔"; position: absolute; top: -8px; right: -6px; font-size: 13px; color: #e0a63c; background: var(--cream); border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
+/* ------------------------------ 시네마 밴드 (Higgsfield) ------------------------------ */
+.film {
+  position: relative; overflow: hidden; padding: 136px 0;
+  background: center/cover no-repeat;   /* 포스터 = reduced-motion 폴백 */
+}
+.film-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.film-scrim {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg,
+    rgba(28,17,11,0.90) 0%, rgba(28,17,11,0.74) 40%,
+    rgba(28,17,11,0.34) 70%, rgba(28,17,11,0.10) 100%);
+}
+.film-scrim.right {
+  background: linear-gradient(270deg,
+    rgba(28,17,11,0.90) 0%, rgba(28,17,11,0.74) 40%,
+    rgba(28,17,11,0.34) 70%, rgba(28,17,11,0.10) 100%);
+}
+.film > .wrap { position: relative; z-index: 2; }
+.film-copy { max-width: 30ch; word-break: keep-all; }   /* 한글 단어 중간 줄바꿈 방지 */
+.film-copy.right { margin-left: auto; text-align: right; }
+.film-copy .eyebrow { color: var(--gold); }
+.film-copy h2 {
+  font-size: 46px; font-weight: 900; letter-spacing: -1.6px; line-height: 1.16; color: #fff;
+  text-shadow: 0 2px 26px rgba(0,0,0,0.55);
+}
+.film-copy p {
+  margin-top: 16px; font-size: 17px; color: rgba(255,246,236,0.92);
+  text-shadow: 0 1px 14px rgba(0,0,0,0.6);
+}
+
+/* CTA 앰비언트 배경 */
+.cta { position: relative; overflow: hidden; }
+.cta > .wrap { position: relative; z-index: 2; }
+.cta-scrim { background: linear-gradient(180deg, rgba(28,17,11,0.84) 0%, rgba(28,17,11,0.74) 55%, rgba(28,17,11,0.88) 100%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .film-video { display: none; }   /* 포스터만 노출 */
+}
+@media (max-width: 860px) {
+  /* 모바일: 얼굴은 위에서 보이게, 카피는 아래에 — 스크림도 아래로 무겁게 */
+  .film { padding: 0; min-height: 66vh; display: flex; align-items: flex-end; }
+  .film > .wrap { padding-bottom: 40px; padding-top: 40px; }
+  .film-copy, .film-copy.right { max-width: none; text-align: center; margin: 0 auto; }
+  .film-copy h2 { font-size: 31px; }
+  .film-copy p { font-size: 15.5px; }
+  .film-scrim, .film-scrim.right {
+    background: linear-gradient(180deg,
+      rgba(28,17,11,0.12) 0%, rgba(28,17,11,0.28) 40%,
+      rgba(28,17,11,0.72) 76%, rgba(28,17,11,0.92) 100%);
+  }
+}
 
 /* ------------------------------ Pricing ------------------------------ */
 .pricing { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 780px; margin: 0 auto; }
