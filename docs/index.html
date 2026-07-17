@@ -9,7 +9,7 @@
 <meta property="og:description" content="온디바이스 AI가 아기의 웃음을 알아보고 셔터를 대신 눌러요. 까꿍만 하세요, 찰칵은 저희가." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='16' fill='%23F2946A'/%3E%3Ccircle cx='32' cy='30' r='16' fill='none' stroke='%234A3A32' stroke-width='3.5'/%3E%3Ccircle cx='26' cy='27' r='2.4' fill='%234A3A32'/%3E%3Ccircle cx='38' cy='27' r='2.4' fill='%234A3A32'/%3E%3Cpath d='M25 33 Q32 40 39 33' fill='none' stroke='%234A3A32' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E" />
-<link rel="stylesheet" href="styles.css?v=20260718c" />
+<link rel="stylesheet" href="styles.css?v=20260718d" />
 </head>
 <body>
 
@@ -83,7 +83,7 @@
           <circle class="fill" cx="88" cy="88" r="85" />
         </svg>
         <div class="p-facebox"></div>
-        <div class="p-face"><div class="p-smile"></div></div>
+        <div class="p-face-anim" data-lottie="lottie/face.json"></div>
         <div class="p-phase">웃음 기다리는 중</div>
         <div class="p-flash"></div>
       </div>
@@ -111,17 +111,26 @@
     </div>
     <div class="steps stagger">
       <div class="step card">
-        <div class="step-num" style="background: var(--accent);">1</div>
+        <div class="step-anim" aria-hidden="true">
+          <div class="step-lottie" data-lottie="lottie/on-device.json"></div>
+          <div class="step-num" style="background: var(--accent);">1</div>
+        </div>
         <h3>폰 뒤에 숨으세요</h3>
         <p>카메라를 아기 쪽으로 향하게 두고, 폰 뒤로 얼굴을 숨겨요. 화면은 보지 않아도 괜찮아요.</p>
       </div>
       <div class="step card">
-        <div class="step-num" style="background: var(--accent-deep);">2</div>
+        <div class="step-anim" aria-hidden="true">
+          <div class="step-lottie" data-lottie="lottie/peekaboo.json"></div>
+          <div class="step-num" style="background: var(--accent-deep);">2</div>
+        </div>
         <h3>"까꿍!" 하고 나오세요</h3>
         <p>아기가 눈을 맞추고 방긋 — 웃음이 피어오르는 바로 그 순간이에요.</p>
       </div>
       <div class="step card">
-        <div class="step-num" style="background: var(--mint);">3</div>
+        <div class="step-anim" aria-hidden="true">
+          <div class="step-lottie" data-lottie="lottie/smile-capture.json"></div>
+          <div class="step-num" style="background: var(--mint);">3</div>
+        </div>
         <h3>웃는 순간은 까꿍이</h3>
         <p>웃음을 알아보고 연사로 담아, 제일 예쁜 한 컷을 골라 둬요. 원하면 찰칵 소리 없이 담을 수도 있어요.</p>
       </div>
@@ -156,47 +165,32 @@
     </div>
     <div class="grid stagger">
       <div class="feature card">
-        <span class="icon">😊</span>
-        <h3>웃음 자동 감지</h3>
-        <p>온디바이스 얼굴 분석이 입꼬리와 눈웃음을 함께 읽어 진짜 웃음만 알아봐요. 웃는 순간, 저절로 연사가 시작돼요.</p>
+        <span class="icon"><svg viewBox="0 0 36 36" aria-hidden="true"><g fill="none" stroke="#6f5a4d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V8a3 3 0 0 1 3-3h3"/><path d="M25 5h3a3 3 0 0 1 3 3v3"/><path d="M31 25v3a3 3 0 0 1-3 3h-3"/><path d="M11 31H8a3 3 0 0 1-3-3v-3"/><path d="M13 20c1.6 2 3.2 3 5 3s3.4-1 5-3"/></g><circle cx="13.5" cy="14" r="1.7" fill="#6f5a4d"/><circle cx="22.5" cy="14" r="1.7" fill="#6f5a4d"/></svg></span>
+        <h3>웃음을 알아보는 카메라</h3>
+        <p>입꼬리와 눈웃음을 함께 읽어 진짜 웃음만 알아봐요. 셔터를 누르기 전 순간까지 미리 담아 둬서, 1초짜리 웃음도 놓치지 않아요.</p>
       </div>
       <div class="feature card">
-        <span class="icon">⚡️</span>
-        <h3>셔터랙 제로</h3>
-        <p>웃음은 1초도 안 기다려요. 셔터를 누르기 전 순간까지 미리 담아 둬서, 지나간 표정도 붙잡아요.</p>
+        <span class="icon"><svg viewBox="0 0 36 36" aria-hidden="true"><g fill="none" stroke="#6f5a4d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="22" height="18" rx="3"/><path d="M11 24l5-6 4 4 3-3 4 5"/></g><path d="M23 4l1.7 3 3.3.4-2.4 2.2.6 3.4-3.2-1.7-3.2 1.7.6-3.4L18 7.4l3.3-.4z" fill="#f2946a"/></svg></span>
+        <h3>베스트컷과 웃음 클립</h3>
+        <p>연사에서 눈감김과 흔들림을 걸러 제일 예쁜 한 장을 골라 둬요. 웃음이 번지는 1.5초는 짧은 영상으로 함께 남아요.</p>
       </div>
       <div class="feature card">
-        <span class="icon">👑</span>
-        <h3>베스트컷 자동 추천</h3>
-        <p>연사 중 눈감김·흔들림을 걸러 제일 예쁜 한 장을 골라 둬요. 나머지는 지우지 않고 트레이에 고이 보관해요.</p>
+        <span class="icon"><svg viewBox="0 0 36 36" aria-hidden="true"><g fill="none" stroke="#6f5a4d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 25a4 4 0 1 1-3-3.9V9l14-3v13"/><circle cx="22" cy="22" r="3.4"/></g><path d="M29 12c1.8 1.4 1.8 4.6 0 6" fill="none" stroke="#f2946a" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <h3>웃게 만드는 사운드</h3>
+        <p>딸랑이·삑삑이·방울에 엄마 아빠 목소리까지 담아 시선을 끌어요. "까꿍!" 소리가 들리면 3초간 더 민감하게 기다려요.</p>
       </div>
       <div class="feature card">
-        <span class="icon">🎬</span>
-        <h3>웃음 아크 클립</h3>
-        <p>웃음이 피어올라 번지는 1.5초를 베스트컷과 함께 짧은 영상으로 남겨요. 사진 한 장으로는 아까운 순간까지요.</p>
-      </div>
-      <div class="feature card">
-        <span class="icon">🔔</span>
-        <h3>시선 끌기 사운드보드</h3>
-        <p>딸랑이·삑삑이·방울, 그리고 엄마·아빠 목소리 녹음까지. 웃음을 "유발"하는 것도 카메라의 일이니까요.</p>
-      </div>
-      <div class="feature card">
-        <span class="icon">🌙</span>
+        <span class="icon"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M21 5a11.5 11.5 0 1 0 10 15.5A10 10 0 0 1 21 5z" fill="none" stroke="#6f5a4d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="27" cy="8.5" r="1.6" fill="#f2946a"/></svg></span>
         <h3>잠든 모드</h3>
         <p>자는 아기 옆에서도 셔터 소리 없이 담아요. 앱의 모든 소리를 끄고, 조용히 그 표정만 남겨요.</p>
       </div>
       <div class="feature card">
-        <span class="icon">🗣️</span>
-        <h3>"까꿍" 음성 반응</h3>
-        <p>"까꿍!" 소리가 들리면 3초간 더 민감하게 웃음을 기다려요. 부르는 이름이 그대로 촬영 신호가 돼요.</p>
-      </div>
-      <div class="feature card">
-        <span class="icon">🍑</span>
+        <span class="icon"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 5c4.5 5.4 8 9.8 8 14a8 8 0 1 1-16 0c0-4.2 3.5-8.6 8-14z" fill="none" stroke="#6f5a4d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 20a3.5 3.5 0 0 0 3 3.4" fill="none" stroke="#f2946a" stroke-width="2" stroke-linecap="round"/></svg></span>
         <h3>아기 살결 톤</h3>
         <p>뽀얀 파스텔과 순한 채도로 붉은 볼을 지키는 아기 전용 톤 8종이에요. 해상도와 디테일은 원본 그대로 남아요.</p>
       </div>
       <div class="feature card">
-        <span class="icon">🎂</span>
+        <span class="icon"><svg viewBox="0 0 36 36" aria-hidden="true"><g fill="none" stroke="#6f5a4d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="24" height="21" rx="3"/><path d="M6 14h24M12 5v5M24 5v5"/></g><path d="M18 25.5l-4.2-4.1a2.6 2.6 0 0 1 3.7-3.7l.5.5.5-.5a2.6 2.6 0 0 1 3.7 3.7z" fill="#f2946a"/></svg></span>
         <h3>D+day와 첫 순간들</h3>
         <p>오늘 담은 웃음 수, 첫 까꿍의 날, 일 년 전 오늘의 웃음까지. 위젯으로 홈 화면에서도 만나요.</p>
       </div>
@@ -208,7 +202,7 @@
 <section>
   <div class="wrap">
     <div class="privacy-band reveal">
-      <span class="shield">🛡️</span>
+      <span class="shield"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 4l11 4v9c0 7.5-4.7 12.6-11 15C11.7 29.6 7 24.5 7 17V8z" fill="none" stroke="#6f5a4d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 17.5l3.5 3.5 6.5-7" fill="none" stroke="#7fbf96" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <div>
         <h3>프라이버시가 기본값</h3>
         <p>
@@ -345,7 +339,7 @@
     <span class="brand">까꿍 · Kkakkung</span>
     <a href="privacy.html">개인정보 처리방침</a>
     <a href="terms.html">이용약관</a>
-    <a class="contact-btn" href="mailto:forgelab.aitech@gmail.com?subject=%5B%EA%B9%8C%EA%BF%8D%5D%20%EB%AC%B8%EC%9D%98">✉️ 문의하기</a>
+    <a class="contact-btn" href="mailto:forgelab.aitech@gmail.com?subject=%5B%EA%B9%8C%EA%BF%8D%5D%20%EB%AC%B8%EC%9D%98">문의하기</a>
     <span class="copy">© 2026 ForgeLab</span>
     <span class="biz">ForgeLab · 대표 Jason Lee</span>
   </div>

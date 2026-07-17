@@ -256,16 +256,10 @@ section { padding: 92px 0; position: relative; }
 .p-dline { font-size: 11px; color: rgba(63,46,38,0.55); font-weight: 600; }
 .p-count { font-size: 15px; color: var(--text); font-weight: 800; margin-top: 2px; }
 .p-stage { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; }
-.p-face {
-  width: 132px; height: 132px; border-radius: 50%;
-  background: radial-gradient(circle at 42% 38%, #fff2e6, #ffc5a3);
-  border: 3px solid rgba(63,46,38,0.7); position: relative;
-  box-shadow: 0 10px 26px rgba(63,46,38,0.16);
+.p-face-anim {
+  position: relative; z-index: 1; width: 150px; height: 150px;
+  filter: drop-shadow(0 10px 22px rgba(63, 46, 38, 0.20));
 }
-.p-face::before, .p-face::after { content: ""; position: absolute; top: 50px; width: 15px; height: 15px; border-radius: 50%; background: #3f2e26; animation: blink 4.6s infinite; }
-.p-face::before { left: 36px; } .p-face::after { right: 36px; }
-.p-smile { position: absolute; left: 50%; top: 74px; transform: translateX(-50%); width: 52px; height: 26px; border: 5px solid #3f2e26; border-top: none; border-radius: 0 0 52px 52px; }
-@keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.15); } }
 .p-gauge { position: absolute; width: 156px; height: 156px; border-radius: 50%; transform: rotate(-90deg); }
 .p-gauge circle { fill: none; stroke-width: 8; }
 .p-gauge .track { stroke: rgba(255,255,255,0.55); }
@@ -338,8 +332,16 @@ section { padding: 92px 0; position: relative; }
 
 /* ------------------------------ Steps ------------------------------ */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.step { padding: 34px 28px; text-align: center; }
-.step-num { width: 44px; height: 44px; border-radius: 50%; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 900; color: #fff; box-shadow: 0 8px 20px rgba(63,46,38,0.14); }
+.step { padding: 18px 28px 32px; text-align: center; }
+.step-anim { position: relative; margin: 0 auto 4px; max-width: 240px; }
+.step-lottie { width: 100%; aspect-ratio: 4 / 3; }
+.step-num {
+  width: 38px; height: 38px; border-radius: 50%;
+  position: absolute; top: 10px; left: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900; color: #fff;
+  box-shadow: 0 8px 20px rgba(63,46,38,0.16);
+}
 .step h3 { font-size: 18px; font-weight: 800; }
 .step p { margin-top: 9px; font-size: 14px; color: var(--body); }
 
@@ -353,7 +355,8 @@ section { padding: 92px 0; position: relative; }
 /* ------------------------------ Features ------------------------------ */
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .feature { padding: 28px 26px; }
-.feature .icon { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 14px; font-size: 25px; background: linear-gradient(135deg, rgba(255,196,107,0.28), rgba(242,148,106,0.2)); margin-bottom: 16px; }
+.feature .icon { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,196,107,0.28), rgba(242,148,106,0.2)); margin-bottom: 16px; }
+.feature .icon svg { width: 30px; height: 30px; display: block; }
 .feature h3 { font-size: 17px; font-weight: 800; }
 .feature p { margin-top: 8px; font-size: 14px; color: var(--body); }
 
@@ -363,7 +366,8 @@ section { padding: 92px 0; position: relative; }
   background: linear-gradient(120deg, rgba(127,191,150,0.16), rgba(242,148,106,0.14));
   border: 1px solid var(--line); border-radius: 26px;
 }
-.privacy-band .shield { font-size: 42px; line-height: 1; filter: drop-shadow(0 6px 14px rgba(127,191,150,0.4)); }
+.privacy-band .shield { line-height: 0; filter: drop-shadow(0 6px 14px rgba(127,191,150,0.4)); }
+.privacy-band .shield svg { width: 46px; height: 46px; display: block; }
 .privacy-band h3 { font-size: 21px; font-weight: 900; }
 .privacy-band p { margin-top: 9px; font-size: 15px; color: var(--body); }
 .privacy-band strong { color: var(--text); }
