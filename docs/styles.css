@@ -39,6 +39,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  word-break: keep-all;        /* 한글 단어 중간 줄바꿈 방지 (전역) */
+  overflow-wrap: break-word;   /* 긴 영문·URL은 안전하게 개행 */
 }
 
 /* ---------- 분위기: 드리프트하는 웜 글로우 + 그레인 ---------- */
@@ -107,9 +109,10 @@ section { padding: 92px 0; position: relative; }
   border-bottom: 1px solid rgba(241, 221, 200, 0.7);
 }
 .nav-inner { max-width: 1080px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 28px; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; color: var(--text); letter-spacing: -0.3px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 21px; color: var(--text); letter-spacing: -0.4px; }
 .logo svg { display: block; }
-.logo-anim { width: 34px; height: 34px; display: block; flex: none; }
+.logo-anim { width: 38px; height: 38px; display: block; flex: none;
+  filter: drop-shadow(0 3px 8px rgba(232, 101, 74, 0.30)); }
 .logo .en { font-size: 12px; font-weight: 700; color: var(--dim); margin-top: 3px; }
 .nav-links { margin-left: auto; display: flex; align-items: center; gap: 22px; }
 .nav-links a { color: var(--body); font-size: 14px; font-weight: 600; transition: color 0.15s; }
@@ -127,6 +130,16 @@ section { padding: 92px 0; position: relative; }
 .nav-cta { padding: 9px 18px; font-size: 13px; border-radius: 11px; color: #fff; }
 
 /* ------------------------------ Hero ------------------------------ */
+.hero-band { position: relative; overflow: hidden; }
+.hero-band > .film-video { opacity: 0.9; }
+.hero-veil {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(255, 246, 236, 0.90) 0%, rgba(255, 246, 236, 0.78) 42%,
+    rgba(255, 246, 236, 0.88) 80%, var(--bg) 100%);
+}
+.hero-band > .hero { position: relative; z-index: 2; }
+
 .hero {
   display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 52px; align-items: center;
   padding: 92px 24px 104px; position: relative;
@@ -140,7 +153,7 @@ section { padding: 92px 0; position: relative; }
 .hero .sub strong { color: var(--text); font-weight: 800; }
 .hero-caption {
   display: inline-block; margin-top: 28px;
-  background: rgba(255, 255, 255, 0.7); color: var(--accent-deep);
+  background: rgba(255, 255, 255, 0.88); color: var(--accent-deep);
   font-size: 15px; font-weight: 800; padding: 10px 18px; border-radius: 12px;
   border: 1px solid var(--line); backdrop-filter: blur(8px);
   box-shadow: 0 8px 24px rgba(63, 46, 38, 0.07);
@@ -174,18 +187,64 @@ section { padding: 92px 0; position: relative; }
 @keyframes halo { 0% { transform: scale(0.96); opacity: 0.85; } 100% { transform: scale(1.06); opacity: 1; } }
 .phone {
   position: relative; z-index: 1;
-  width: 264px; height: 548px; background: #1c1613; border-radius: 44px; padding: 11px;
-  box-shadow: 0 40px 90px rgba(63, 46, 38, 0.34), inset 0 0 0 2px #2c2320;
+  width: 264px; height: 548px; border-radius: 46px; padding: 10px;
+  background: linear-gradient(160deg, #4a423e 0%, #241d1a 30%, #17110e 100%);
+  box-shadow: 0 40px 90px rgba(63, 46, 38, 0.36),
+              inset 0 0 0 1.5px rgba(255, 236, 214, 0.20),
+              inset 0 0 0 4px #0d0a08;
   animation: float 7s ease-in-out infinite;
+}
+/* 사이드 버튼 — 좌: 액션·볼륨 2개 / 우: 전원 */
+.phone::before {
+  content: ""; position: absolute; left: -2.5px; top: 118px;
+  width: 3px; height: 24px; border-radius: 2px; background: #3a322e;
+  box-shadow: 0 38px 0 #3a322e, 0 84px 0 #3a322e;
+}
+.phone::after {
+  content: ""; position: absolute; right: -2.5px; top: 176px;
+  width: 3px; height: 58px; border-radius: 2px; background: #3a322e;
 }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
 .phone-screen {
-  width: 100%; height: 100%; border-radius: 33px; overflow: hidden;
+  width: 100%; height: 100%; border-radius: 37px; overflow: hidden;
   background: linear-gradient(170deg, #ffe9d6 0%, #ffd9bf 48%, #f7b58e 100%);
   position: relative; display: flex; flex-direction: column;
 }
-.phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 108px; height: 26px; background: #1c1613; border-radius: 0 0 16px 16px; z-index: 5; }
-.p-top { padding: 30px 18px 0; }
+.phone-screen::after {  /* 유리 반사 */
+  content: ""; position: absolute; inset: 0; z-index: 7; pointer-events: none;
+  background: linear-gradient(115deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.04) 28%, transparent 45%);
+}
+/* 다이나믹 아일랜드 */
+.p-island {
+  position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+  width: 84px; height: 24px; border-radius: 13px; background: #0b0908; z-index: 6;
+}
+.p-island::after {  /* 전면 카메라 점 */
+  content: ""; position: absolute; right: 7px; top: 50%; transform: translateY(-50%);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2e3a4a, #0b0908 70%);
+}
+/* 상태바 */
+.p-status {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 24px 0; z-index: 5;
+}
+.p-time { font-size: 12px; font-weight: 700; color: rgba(63, 46, 38, 0.85); }
+.p-glyphs { display: flex; align-items: center; gap: 5px; }
+.p-sbars { display: flex; align-items: flex-end; gap: 1.5px; }
+.p-sbars i { width: 2.5px; border-radius: 1px; background: rgba(63, 46, 38, 0.8); }
+.p-sbars i:nth-child(1) { height: 4px; } .p-sbars i:nth-child(2) { height: 6px; }
+.p-sbars i:nth-child(3) { height: 8px; } .p-sbars i:nth-child(4) { height: 10px; }
+.p-batt {
+  width: 21px; height: 10.5px; border-radius: 3px;
+  border: 1.2px solid rgba(63, 46, 38, 0.55); padding: 1.2px; display: block; position: relative;
+}
+.p-batt::after {  /* 배터리 꼭지 */
+  content: ""; position: absolute; right: -3.5px; top: 50%; transform: translateY(-50%);
+  width: 1.6px; height: 4px; border-radius: 0 1px 1px 0; background: rgba(63, 46, 38, 0.55);
+}
+.p-batt i { display: block; height: 100%; width: 78%; border-radius: 1.5px; background: rgba(63, 46, 38, 0.8); }
+.p-top { padding: 12px 20px 0; }
 .p-dline { font-size: 11px; color: rgba(63,46,38,0.55); font-weight: 600; }
 .p-count { font-size: 15px; color: var(--text); font-weight: 800; margin-top: 2px; }
 .p-stage { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; }
@@ -199,16 +258,64 @@ section { padding: 92px 0; position: relative; }
 .p-face::before { left: 36px; } .p-face::after { right: 36px; }
 .p-smile { position: absolute; left: 50%; top: 74px; transform: translateX(-50%); width: 52px; height: 26px; border: 5px solid #3f2e26; border-top: none; border-radius: 0 0 52px 52px; }
 @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.15); } }
-.p-gauge { position: absolute; width: 176px; height: 176px; border-radius: 50%; transform: rotate(-90deg); }
+.p-gauge { position: absolute; width: 156px; height: 156px; border-radius: 50%; transform: rotate(-90deg); }
 .p-gauge circle { fill: none; stroke-width: 8; }
 .p-gauge .track { stroke: rgba(255,255,255,0.55); }
 .p-gauge .fill { stroke: var(--accent-deep); stroke-linecap: round; stroke-dasharray: 534; stroke-dashoffset: 534; animation: fillGauge 3.6s ease-in-out infinite; }
 @keyframes fillGauge { 0% { stroke-dashoffset: 534; } 45% { stroke-dashoffset: 40; } 62% { stroke-dashoffset: 40; } 70% { stroke-dashoffset: 40; opacity: 1; } 74% { opacity: 0.2; } 80%, 100% { stroke-dashoffset: 534; opacity: 1; } }
 .p-flash { position: absolute; inset: 0; background: #fff; opacity: 0; animation: flash 3.6s ease-out infinite; }
 @keyframes flash { 0%, 66% { opacity: 0; } 70% { opacity: 0.6; } 82%, 100% { opacity: 0; } }
-.p-shutter { padding: 0 0 30px; display: flex; align-items: center; justify-content: center; gap: 26px; }
-.p-thumb, .p-sound { width: 34px; height: 34px; border-radius: 9px; background: rgba(255,255,255,0.5); }
+/* 얼굴 추적 박스 — 앱의 다둥이 선택 UI */
+.p-facebox {
+  position: absolute; width: 178px; height: 178px; border-radius: 32px;
+  border: 2px solid rgba(232, 101, 74, 0.8); z-index: 2;
+}
+.p-facebox::after {  /* 웃음 감지 배지 */
+  content: "☺"; position: absolute; top: -9px; right: -9px;
+  width: 20px; height: 20px; border-radius: 50%; background: var(--accent-deep);
+  color: #fff; font-size: 12px; line-height: 20px; text-align: center;
+}
+.p-phase {
+  position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+  font-size: 10px; font-weight: 700; color: rgba(63, 46, 38, 0.6);
+  background: rgba(255, 251, 244, 0.62); padding: 3px 10px; border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+/* 필터 칩 행 — 중앙 칩이 적용 중(아우라) */
+.p-filters {
+  display: flex; align-items: center; justify-content: center; gap: 13px;
+  padding: 4px 0 10px;
+}
+.p-filters i, .p-filters b {
+  display: block; border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #fff2e6, #f2b48c);
+}
+.p-filters i { width: 21px; height: 21px; opacity: 0.75; }
+.p-filters i:nth-child(1), .p-filters i:nth-child(5) { opacity: 0.45; }
+.p-filters b {
+  width: 27px; height: 27px; border: 2px solid #fff;
+  box-shadow: 0 0 14px rgba(242, 148, 106, 0.95), 0 0 4px rgba(255, 214, 107, 0.8);
+}
+.p-shutter { padding: 0 26px 24px; display: flex; align-items: center; justify-content: space-between; }
+.p-thumb, .p-sound { width: 30px; height: 30px; border-radius: 9px; background: rgba(255,255,255,0.55); position: relative; }
+.p-thumb::before {  /* 해 점 */
+  content: ""; position: absolute; top: 6px; right: 7px; width: 5px; height: 5px;
+  border-radius: 50%; background: rgba(63, 46, 38, 0.45);
+}
+.p-thumb::after {  /* 산 삼각형 */
+  content: ""; position: absolute; left: 5px; bottom: 6px;
+  border-left: 7px solid transparent; border-right: 7px solid transparent;
+  border-bottom: 8px solid rgba(63, 46, 38, 0.45);
+}
 .p-sound { border-radius: 50%; }
+.p-sound::after {  /* 스피커 점 */
+  content: ""; position: absolute; inset: 0; margin: auto; width: 10px; height: 10px;
+  border-radius: 50%; border: 2.5px solid rgba(63, 46, 38, 0.5);
+}
+.p-btnlabel {
+  font-size: 10.5px; font-weight: 800; color: rgba(63, 46, 38, 0.55); letter-spacing: -0.2px;
+}
+.p-btnlabel.on { color: var(--accent-deep); }
 .p-shutter-ring { width: 62px; height: 62px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55); display: flex; align-items: center; justify-content: center; position: relative; }
 .p-shutter-ring::after { content: ""; width: 50px; height: 50px; border-radius: 50%; background: #fff; }
 .p-shutter-ring::before { content: "☺"; position: absolute; z-index: 2; font-size: 22px; color: var(--accent-deep); }

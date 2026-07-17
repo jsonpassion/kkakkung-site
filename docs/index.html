@@ -9,7 +9,7 @@
 <meta property="og:description" content="온디바이스 AI가 아기의 웃음을 알아보고 셔터를 대신 눌러요. 까꿍만 하세요, 찰칵은 저희가." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='16' fill='%23F2946A'/%3E%3Ccircle cx='32' cy='30' r='16' fill='none' stroke='%234A3A32' stroke-width='3.5'/%3E%3Ccircle cx='26' cy='27' r='2.4' fill='%234A3A32'/%3E%3Ccircle cx='38' cy='27' r='2.4' fill='%234A3A32'/%3E%3Cpath d='M25 33 Q32 40 39 33' fill='none' stroke='%234A3A32' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E" />
-<link rel="stylesheet" href="styles.css?v=20260717a" />
+<link rel="stylesheet" href="styles.css?v=20260718a" />
 </head>
 <body>
 
@@ -34,13 +34,20 @@
 </nav>
 
 <!-- ======================= HERO ======================= -->
-<header class="hero wrap" id="download">
+<header class="hero-band" id="download">
+  <video class="film-video" autoplay muted loop playsinline preload="metadata"
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0"
+         poster="assets/video/glow.jpg" aria-hidden="true">
+    <source src="assets/video/glow.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="hero wrap">
   <div class="reveal">
     <span class="tag">iOS · 온디바이스 웃음 감지 카메라</span>
     <h1>아기가 웃는 순간,<br /><span class="hl">저절로</span> 찰칵</h1>
     <p class="sub">
       그 웃음은 딱 1초, 셔터를 누르는 사이 지나가 버려요.
-      까꿍은 아기의 웃음을 <strong>알아보고 셔터를 대신 눌러 줍니다.</strong>
+      까꿍은 아기의 웃음을 <strong>알아보고, 셔터를 대신 눌러 줘요.</strong>
       엄마는 아기만 바라보세요 — <strong>찰칵은 까꿍이</strong> 할게요.
     </p>
     <span class="hero-caption" id="heroCaption">까꿍만 하세요. 찰칵은 저희가.</span>
@@ -58,25 +65,38 @@
   <div class="phone-wrap reveal from-r" aria-hidden="true">
   <div class="phone">
     <div class="phone-screen">
-      <div class="phone-notch"></div>
+      <div class="p-island"></div>
+      <div class="p-status">
+        <span class="p-time">9:41</span>
+        <span class="p-glyphs">
+          <span class="p-sbars"><i></i><i></i><i></i><i></i></span>
+          <span class="p-batt"><i></i></span>
+        </span>
+      </div>
       <div class="p-top">
-        <div class="p-dline">수요일, 7월 15일</div>
-        <div class="p-count">D+123 · 오늘 까꿍 3장</div>
+        <div class="p-dline">금요일, 7월 17일</div>
+        <div class="p-count">D+125 · 오늘 까꿍 3장</div>
       </div>
       <div class="p-stage">
         <svg class="p-gauge" viewBox="0 0 176 176">
           <circle class="track" cx="88" cy="88" r="85" />
           <circle class="fill" cx="88" cy="88" r="85" />
         </svg>
+        <div class="p-facebox"></div>
         <div class="p-face"><div class="p-smile"></div></div>
+        <div class="p-phase">웃음 기다리는 중</div>
         <div class="p-flash"></div>
       </div>
+      <div class="p-filters"><i></i><i></i><b></b><i></i><i></i></div>
       <div class="p-shutter">
         <div class="p-thumb"></div>
+        <span class="p-btnlabel">방금!</span>
         <div class="p-shutter-ring"></div>
+        <span class="p-btnlabel on">까꿍</span>
         <div class="p-sound"></div>
       </div>
     </div>
+  </div>
   </div>
   </div>
 </header>
@@ -214,7 +234,7 @@
     <div class="film-copy right reveal">
       <span class="eyebrow">그 찰나</span>
       <h2>그 웃음은,<br />딱 1초예요</h2>
-      <p>셔터를 누르는 사이 지나가 버려요. 엄마는 아기만 바라보세요 — 찰칵은 까꿍이 할게요.</p>
+      <p>웃음이 피어오르는 순간, 이미 셔터가 움직이고 있어요. 엄마 손보다 빠르게 — 그게 까꿍이 하는 일이에요.</p>
     </div>
   </div>
 </section>
@@ -301,14 +321,14 @@
 <section class="deep cta">
   <video class="film-video" autoplay muted loop playsinline preload="metadata"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0"
-         poster="assets/video/glow.jpg" aria-hidden="true">
-    <source src="assets/video/glow.mp4" type="video/mp4" />
+         poster="assets/video/night.jpg" aria-hidden="true">
+    <source src="assets/video/night.mp4" type="video/mp4" />
   </video>
   <div class="film-scrim cta-scrim"></div>
   <div class="wrap">
     <div class="cta-logo reveal" data-lottie="lottie/logo.json" aria-label="까꿍 로고"></div>
     <h2 class="reveal">오늘의 첫 까꿍을<br />담아볼까요?</h2>
-    <p class="reveal">그 웃음은 딱 1초. 까꿍이 대신 기다릴게요.</p>
+    <p class="reveal">가장 예쁜 웃음은 늘 예고 없이 와요. 까꿍이 대신 기다릴게요.</p>
     <div class="hero-ctas reveal">
       <a class="store-badge" href="#" onclick="alert('App Store 출시 준비 중입니다!'); return false;">
         <svg width="22" height="26" viewBox="0 0 22 26" fill="currentColor" aria-hidden="true"><path d="M18.3 13.8c0-3 2.5-4.5 2.6-4.6-1.4-2.1-3.6-2.4-4.4-2.4-1.9-.2-3.7 1.1-4.6 1.1-1 0-2.4-1.1-4-1.1-2 0-3.9 1.2-5 3-2.1 3.7-.5 9.1 1.5 12.1 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 4-1s2.4 1 4 .9c1.7 0 2.7-1.5 3.7-3 1.2-1.7 1.6-3.4 1.7-3.5-.1 0-3.2-1.2-3.3-4.5zM15.2 4.8c.8-1 1.4-2.4 1.2-3.8-1.2.1-2.7.8-3.5 1.8-.8.9-1.5 2.3-1.3 3.7 1.4.1 2.8-.7 3.6-1.7z"/></svg>
