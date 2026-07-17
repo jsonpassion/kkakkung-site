@@ -135,12 +135,16 @@ section { padding: 92px 0; position: relative; }
 
 /* ------------------------------ Hero ------------------------------ */
 .hero-band { position: relative; overflow: hidden; }
-.hero-band > .film-video { opacity: 0.9; }
 .hero-veil {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(180deg,
-    rgba(255, 246, 236, 0.90) 0%, rgba(255, 246, 236, 0.78) 42%,
-    rgba(255, 246, 236, 0.88) 80%, var(--bg) 100%);
+  background:
+    /* 하단: 다음 섹션으로 자연스럽게 */
+    linear-gradient(180deg, transparent 82%, var(--bg) 100%),
+    /* 좌→우: 텍스트 쪽만 진한 크림, 오른쪽은 영상이 살아있게 */
+    linear-gradient(90deg,
+      rgba(255, 246, 236, 0.94) 0%, rgba(255, 246, 236, 0.88) 30%,
+      rgba(255, 246, 236, 0.60) 52%, rgba(255, 246, 236, 0.30) 72%,
+      rgba(255, 246, 236, 0.38) 100%);
 }
 .hero-band > .hero { position: relative; z-index: 2; }
 
@@ -419,6 +423,13 @@ section { padding: 92px 0; position: relative; }
   .film-video { display: none; }   /* 포스터만 노출 */
 }
 @media (max-width: 860px) {
+  .hero-veil {
+    background:
+      linear-gradient(180deg, transparent 88%, var(--bg) 100%),
+      linear-gradient(180deg,
+        rgba(255, 246, 236, 0.94) 0%, rgba(255, 246, 236, 0.90) 46%,
+        rgba(255, 246, 236, 0.55) 72%, rgba(255, 246, 236, 0.42) 100%);
+  }
   /* 모바일: 얼굴은 위에서 보이게, 카피는 아래에 — 스크림도 아래로 무겁게 */
   .film { padding: 0; min-height: 66vh; display: flex; align-items: flex-end; }
   .film > .wrap { padding-bottom: 40px; padding-top: 40px; }
